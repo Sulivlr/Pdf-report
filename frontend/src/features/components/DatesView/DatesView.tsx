@@ -37,16 +37,20 @@ const DatesView = () => {
   );
 
   return (
-    <div className="flex h-screen bg-background p-4">
-      <Card className="flex-1 bg-background w-full">
-        <CardHeader className="border-b">
+    <div className="flex flex-col bg-background p-4">
+      <Card className="w-full max-w-4xl mx-auto mt-10 shadow-2xl bg-background">
+        <CardHeader
+          className="border-b sticky top-0 bg-background z-10"
+          style={{ position: 'sticky', top: 0, zIndex: 10 }}
+        >
           <CardTitle className="text-xl flex items-center gap-2">
             <Calendar className="h-6 w-6" />
             Просмотр по датам
           </CardTitle>
         </CardHeader>
+
         <CardContent className="p-6">
-          <ScrollArea className="h-[calc(100vh-180px)]">
+          <ScrollArea className="h-[60vh] pr-4">
             <div className="space-y-6">
               {Object.entries(groupedFiles).map(([date, files]) => (
                 <div key={date} className="border rounded-lg p-4">

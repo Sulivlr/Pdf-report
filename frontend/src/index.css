@@ -3,9 +3,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
-body {
-  margin: 0 auto;
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: hidden;
 }
+
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
