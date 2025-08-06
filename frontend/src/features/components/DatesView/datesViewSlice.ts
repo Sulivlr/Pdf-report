@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchDatesViewFiles } from './datesViewThunks';
-import type { File } from '../../../types';
+import type { FileEntity } from '@/types';
 
 export interface datesViewState {
-  items: File[];
+  items: FileEntity[];
   isFetching: boolean;
 }
 

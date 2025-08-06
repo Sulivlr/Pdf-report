@@ -31,7 +31,9 @@ const FileInput: React.FC<Props> = ({ onChange, label, name }) => {
   return (
     <div className="flex items-end gap-4">
       <div className="flex flex-col gap-1 w-full">
-        <Label htmlFor={name}>{label}</Label>
+        <Label className="mb-2" htmlFor={name}>
+          {label}
+        </Label>
         <Input
           id={name}
           readOnly

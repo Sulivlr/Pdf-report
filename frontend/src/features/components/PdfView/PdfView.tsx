@@ -4,12 +4,12 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from '../../../components/ui/dialog';
+} from '@/components/ui/dialog';
 import { useState } from 'react';
-import { Button } from '../../../components/ui/button';
+import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 interface PDFViewerProps {
   isOpen: boolean;
@@ -28,8 +28,6 @@ const PDFViewer = ({ isOpen, onClose, file }: PDFViewerProps) => {
     setNumPages(numPages);
     setPageNumber(1);
   };
-
-  
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -60,7 +58,9 @@ const PDFViewer = ({ isOpen, onClose, file }: PDFViewerProps) => {
             <Button
               variant="outline"
               size="icon"
-              onClick={() => setPageNumber((prev) => Math.min(prev + 1, numPages))}
+              onClick={() =>
+                setPageNumber((prev) => Math.min(prev + 1, numPages))
+              }
               disabled={pageNumber >= numPages}
             >
               <ChevronRight className="h-4 w-4" />

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Button } from '../../../components/ui/button';
-import { Label } from '../../../components/ui/label';
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
 import { Plus } from 'lucide-react';
 import {
   Dialog,
@@ -8,20 +8,22 @@ import {
   DialogHeader,
   DialogTitle,
   DialogFooter,
-} from '../../../components/ui/dialog';
-import { useAppDispatch } from '../../../app/hooks';
+} from '@/components/ui/dialog';
+import { useAppDispatch } from '@/app/hooks';
 import {
   createFolder,
   fetchFolders,
 } from '../../components/SidebarFolders/foldersThunks';
-import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const NewFolder = () => {
+interface NewFolderProps {
+  onSubmit: (folderId: number) => void;
+}
+
+const NewFolder: React.FC<NewFolderProps> = ({ onSubmit }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [folderName, setFolderName] = useState('');
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,11 +33,11 @@ const NewFolder = () => {
       ).unwrap();
       setFolderName('');
       setIsOpen(false);
-      navigate(`/folders/${newFolder.id}`);
+      onSubmit(newFolder.id);
       await dispatch(fetchFolders());
-      toast.success('Folder is created');
+      toast.success('Папка создана');
     } catch {
-      toast.error('Folder didn’t create');
+      toast.error('Не удалось создать папку');
     }
   };
 
@@ -48,7 +50,7 @@ const NewFolder = () => {
       <Button
         variant="outline"
         onClick={() => setIsOpen(true)}
-        className="bg-white text-blue-700 hover:bg-white/90 border-transparent"
+        className="bg-white text-blue-700 hover:bg-white/90 border-transparent cursor-pointer"
       >
         <Plus className="w-4 h-4 mr-2" />
         Создать папку

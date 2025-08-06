@@ -1,11 +1,10 @@
-import { cn } from '../../../components/lib/utils';
 import { Folder } from 'lucide-react';
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from '../../../components/ui/tooltip';
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+} from '@/components/ui/tooltip';
+import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import { useEffect } from 'react';
 import {
   selectFolders,
@@ -14,6 +13,7 @@ import {
 } from './foldersSlice';
 import { fetchFolders } from './foldersThunks';
 import { useNavigate } from 'react-router-dom';
+import { cn } from '@/lib/utils';
 
 const SidebarFolders = () => {
   const dispatch = useAppDispatch();

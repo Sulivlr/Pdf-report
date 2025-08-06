@@ -1,6 +1,6 @@
-import { cn } from '../../../components/lib/utils';
 import { useNavigate } from 'react-router-dom';
 import NewFolder from './NewFolder';
+import { cn } from '@/lib/utils';
 
 const drawerWidth = 299;
 

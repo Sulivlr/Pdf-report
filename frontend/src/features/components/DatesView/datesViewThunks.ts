@@ -1,11 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axiosApi from '../../../axiosApi';
-import type { File } from '../../../types';
+import type { FileEntity } from '@/types';
 
-export const fetchDatesViewFiles = createAsyncThunk<File[]>(
+export const fetchDatesViewFiles = createAsyncThunk<FileEntity[]>(
   'datesViewFiles/fetchFiles',
   async () => {
-    const { data: files } = await axiosApi.get<File[]>('/files');
+    const { data: files } = await axiosApi.get<FileEntity[]>('/files');
     return files;
   },
 );
